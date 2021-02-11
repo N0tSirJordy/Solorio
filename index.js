@@ -1,3 +1,4 @@
+const star = require('star-labs');
 
 const Discord = require("discord.js");
 
@@ -190,9 +191,6 @@ message.channel.send({embed})
  }).catch(e => message.channel.send("ERROR "+e))
 
 }
-
-const star = require('star-labs');
-
 	if(command === 'hug'){
 	message.delete()
 	let aA = message.author
