@@ -2,8 +2,6 @@ const star = require('star-labs');
 
 const Discord = require("discord.js");
 
-const client = new Discord.Client();
-
 const config = require("./config.json");
 
 const booru = require("booru");
@@ -12,23 +10,25 @@ const {meme} = require("memejs");
 
 const akaneko = require("akaneko");
 
+const client = new Discord.Client();
+
 client.on("ready", () => {
 
   console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
 
-  client.user.setActivity(`Serving ${client.guilds.cache.size} servers (My prefix is === "s!")`);
+  client.user.setActivity(`Sirviendo ${client.guilds.cache.size} servers (Mi prefix es === "s!")`);
 });
 
 client.on("guildCreate", guild => {
 
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-  client.user.setActivity(`Serving ${client.guilds.cache.size} servers`);
+  client.user.setActivity(`Sirviendo ${client.guilds.cache.size} servers`);
 });
 
 client.on("guildDelete", guild => {
 
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-  client.user.setActivity(`Serving ${client.guilds.cache.size} servers`);
+  client.user.setActivity(`Sirviendo ${client.guilds.cache.size} servers`);
 });
 
 client.on("message", async message => {
@@ -40,10 +40,10 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  if(command === "ping"){
+  if(command === "ping") {
 
     const m = await message.channel.send("Haciendo ping...");
-    m.edit(`Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+    m.edit(`La latencia es ${m.createdTimestamp - message.createdTimestamp}ms. La latencia del API es ${Math.round(client.ws.ping)}ms`);
   }
 
   if(command === "say"){
@@ -68,13 +68,13 @@ client.on("message", async message => {
   }
   
   if(command == "hentai"){
-    if(!message.channel.nsfw) {
+    if(!message.channel.nsfw){
       return message.channel.send("este canal no es NSFW")
     }
-    const embed = new Discord.MessageEmbed()
+    const hentaiembed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setImage(akaneko.nsfw.hentai())
-    message.channel.send(embed)
+    message.channel.send(hentaiembed)
      }
 
       if(command === 'cum'){
@@ -103,7 +103,7 @@ client.on("message", async message => {
         }
         if(command == "maid"){
           if(!message.channel.nsfw){
-            return message.channel.send("este canal no es NSFW")
+            return message.channel.send("Este canal no está marcado como NSFW")
           }
           const maidembed = new Discord.MessageEmbed()
           .setColor("RANDOM")
@@ -112,7 +112,7 @@ client.on("message", async message => {
            }
            if(command == "netorare"){
             if(!message.channel.nsfw){
-              return message.channel.send("este canal no es NSFW")
+              return message.channel.send("Este canal no está marcado como NSFW")
             }
             const netorareembed = new Discord.MessageEmbed()
             .setColor("RANDOM")
@@ -121,7 +121,7 @@ client.on("message", async message => {
              }
              if(command == "uniform"){
               if(!message.channel.nsfw){
-                return message.channel.send("este canal no es NSFW")
+                return message.channel.send("Este canal no está marcado como NSFW")
               }
               const uniformembed = new Discord.MessageEmbed()
               .setColor("RANDOM")
@@ -130,7 +130,7 @@ client.on("message", async message => {
                }
                if(command == "feet"){
                 if(!message.channel.nsfw){
-                  return message.channel.send("este canal no es NSFW")
+                  return message.channel.send("Este canal no está marcado como NSFW")
                 }
                 const feetembed = new Discord.MessageEmbed()
                 .setColor("RANDOM")
@@ -139,7 +139,7 @@ client.on("message", async message => {
                  }
                  if(command == "ass"){
                   if(!message.channel.nsfw){
-                    return message.channel.send("este canal no es NSFW")
+                    return message.channel.send("Este canal no está marcado como NSFW")
                   }
                   const assembed = new Discord.MessageEmbed()
                   .setColor("RANDOM")
@@ -148,7 +148,7 @@ client.on("message", async message => {
                    }
                    if(command == "orgy"){
                     if(!message.channel.nsfw){
-                      return message.channel.send("este canal no es NSFW")
+                      return message.channel.send("Este canal no está marcado como NSFW")
                     }
                     const orgyembed = new Discord.MessageEmbed()
                     .setColor("RANDOM")
@@ -157,7 +157,7 @@ client.on("message", async message => {
                      }
                      if(command == "panties"){
                       if(!message.channel.nsfw){
-                        return message.channel.send("este canal no es NSFW")
+                        return message.channel.send("Este canal no está marcado como NSFW")
                       }
                       const pantiesembed = new Discord.MessageEmbed()
                       .setColor("RANDOM")
@@ -166,7 +166,7 @@ client.on("message", async message => {
                        }
                      if(command == "femdom"){
                       if(!message.channel.nsfw){
-                        return message.channel.send("este canal no es NSFW")
+                        return message.channel.send("Este canal no está marcado como NSFW")
                       }
                       const femdomembed = new Discord.MessageEmbed()
                       .setColor("RANDOM")
@@ -178,10 +178,10 @@ client.on("message", async message => {
 if(command == "r34"){
   if(!message.channel.nsfw) return message.channel.send("Marca este canal como NSFW")
 const tags = args.join(" ")
-if(!tags) return message.channel.send("Para encontrar la imagen que buscas, es necesario ")
+if(!tags) return message.channel.send("Para encontrar la imagen que buscas, es necesario que ")
 booru.search('rule34', [tags], { limit: 1, random: true })
 .then(posts => {
-for(let post of posts) {
+for(let post of posts){
 const embed = new Discord.MessageEmbed()
 .setColor("#FFC0CB")
 .setTitle(`Resultados de búsqueda para: ${tags}`)
@@ -392,21 +392,70 @@ if(command === 'voicekick'){
 if(command === 'help'){
   const embed = new Discord.MessageEmbed()    
   .setTitle('Lista de comandos del bot:')
-  .setDescription('Esta es la lista completa de los comandos del bot(más comandos serán agregados próximamente, al igual que se arreglará la traducción)')
+  .setDescription('Esta es la lista completa de los comandos del bot(más comandos serán agregados próximamente)')
   .addField('Comandos de reacciones','`hug`,`kiss`,`slap`,`lick`,`pat`,`happy`,`kill`,`cry`,`confused`,`blush`,`feed`,`sleep`,`dance`,`suicide`,`fuckyou`', false)
   .addField('Comandos de diversión', '`say`, `meme`, `ping`', false)
-  .addField('Comandos de moderacion', '`purge`,`voicekick`', false)
+  .addField('Comandos de moderacion', '`purge`,`voicekick`,`ban`', false)
   .addField('Comandos NSFW', '`r34`,`hentai`,`cum`,`maid`,`blowjob`,`netorare`,`uniform`,`feet`,`ass`,`panties`,`femdom`,`orgy`', false)
-  .setThumbnail('')
   .setColor('RANDOM')
-  .setFooter('by NotSirJordy#0899')
+  .setFooter(message.guild.name, message.guild.iconURL())
   .setTimestamp()
   .setAuthor(message.author.username, message.author.avatarURL())
   console.log('help command used')
   message.channel.send(embed);
 }
+if(command === 'ban') {
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(message.author.username, message.author.displayAvatarURL())
+    .setFooter(message.guild.name, message.guild.iconURL())
 
+if (!args[0]) {
+    embed.setDescription('Debes que mencionar a un usuario.') 
+    embed.setColor('RED')
+    return message.channel.send(embed).then(m => m.delete({ timeout: 3000 }))
 }
-);
+
+let member = message.mentions.members.first() || message.guild.members.resolve(args[0]) || message.guild.members.cache.find(m => m.user.username.toLowerCase() == args[0]) || await client.users.fetch(args[0])
+if (!member || member.id == message.author.id) {
+    embed.setDescription('Debes que mencionar a un usuario.') 
+    embed.setColor('RED')
+    return message.channel.send(embed)
+}
+
+
+if (!message.member.permissions.has('BAN_MEMBERS')) {
+    embed.setDescription('No puedes usar este comando.') 
+    embed.setColor('RED')
+    return message.channel.send(embed)
+}
+
+if (message.guild.members.resolve(member.id)) {
+    if (message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) {
+        embed.setDescription('No puedes banear a un usuario con mayor o igual nivel jerarquía que tú.') 
+        embed.setColor('RED')
+        return message.channel.send(embed)
+    }
+    if (!member.bannable) {
+        embed.setDescription('No puedo banear a este usuario')
+        embed.setColor('RED')
+        return message.channel.send(embed)
+    }
+}
+
+let razon = args.slice(1).join(" ") ? args.slice(1).join(" ") : "Razon sin especificar" 
+message.guild.members.ban(member.id, { reason: razon })
+embed
+    .setAuthor(message.author.username, message.author.displayAvatarURL())
+    .setThumbnail(!!member.user ? member.user.displayAvatarURL() : member.displayAvatarURL())
+    .setTitle('¡Baneo exitoso!')
+    .addField(`> Usuario Baneado`, !!member.user ? member.user.tag : member.tag)
+    .addField('> Razón', razon)
+    .setColor('AQUA')
+    .setTimestamp()
+
+if (!!member.user) member.user.send(embed).catch(e => e);
+message.channel.send(embed)
+}});
+
 
 client.login(config.token); 
