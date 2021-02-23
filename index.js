@@ -40,13 +40,13 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  if(command === "ping") {
+  if(command === "ping"){
 
     const m = await message.channel.send("Haciendo ping...");
     m.edit(`Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
   }
 
-  if(command === "say") {
+  if(command === "say"){
 
     const sayMessage = args.join(" ");
 
@@ -55,7 +55,7 @@ client.on("message", async message => {
     message.channel.send(sayMessage);
   }
 
-  if(command === "purge") {
+  if(command === "purge"){
 
     const deleteCount = parseInt(args[0], 10);
 
@@ -67,7 +67,7 @@ client.on("message", async message => {
       .catch(error => message.reply(`No puedo borrar mensajes. Razón: ${error}`));
   }
   
-  if(command == "hentai") {
+  if(command == "hentai"){
     if(!message.channel.nsfw) {
       return message.channel.send("este canal no es NSFW")
     }
@@ -101,8 +101,8 @@ client.on("message", async message => {
           .setTimestamp();
           message.channel.send(aC);
         }
-        if(command == "maid") {
-          if(!message.channel.nsfw) {
+        if(command == "maid"){
+          if(!message.channel.nsfw){
             return message.channel.send("este canal no es NSFW")
           }
           const maidembed = new Discord.MessageEmbed()
@@ -110,8 +110,8 @@ client.on("message", async message => {
           .setImage(akaneko.nsfw.maid())
           message.channel.send(maidembed)
            }
-           if(command == "netorare") {
-            if(!message.channel.nsfw) {
+           if(command == "netorare"){
+            if(!message.channel.nsfw){
               return message.channel.send("este canal no es NSFW")
             }
             const netorareembed = new Discord.MessageEmbed()
@@ -119,8 +119,8 @@ client.on("message", async message => {
             .setImage(akaneko.nsfw.netorare())
             message.channel.send(netorareembed)
              }
-             if(command == "uniform") {
-              if(!message.channel.nsfw) {
+             if(command == "uniform"){
+              if(!message.channel.nsfw){
                 return message.channel.send("este canal no es NSFW")
               }
               const uniformembed = new Discord.MessageEmbed()
@@ -128,8 +128,8 @@ client.on("message", async message => {
               .setImage(akaneko.nsfw.uniform())
               message.channel.send(uniformembed)
                }
-               if(command == "feet") {
-                if(!message.channel.nsfw) {
+               if(command == "feet"){
+                if(!message.channel.nsfw){
                   return message.channel.send("este canal no es NSFW")
                 }
                 const feetembed = new Discord.MessageEmbed()
@@ -137,8 +137,8 @@ client.on("message", async message => {
                 .setImage(akaneko.nsfw.feet())
                 message.channel.send(feetembed)
                  }
-                 if(command == "ass") {
-                  if(!message.channel.nsfw) {
+                 if(command == "ass"){
+                  if(!message.channel.nsfw){
                     return message.channel.send("este canal no es NSFW")
                   }
                   const assembed = new Discord.MessageEmbed()
@@ -146,8 +146,8 @@ client.on("message", async message => {
                   .setImage(akaneko.nsfw.ass())
                   message.channel.send(assembed)
                    }
-                   if(command == "orgy") {
-                    if(!message.channel.nsfw) {
+                   if(command == "orgy"){
+                    if(!message.channel.nsfw){
                       return message.channel.send("este canal no es NSFW")
                     }
                     const orgyembed = new Discord.MessageEmbed()
@@ -155,8 +155,8 @@ client.on("message", async message => {
                     .setImage(akaneko.nsfw.orgy())
                     message.channel.send(orgyembed)
                      }
-                     if(command == "panties") {
-                      if(!message.channel.nsfw) {
+                     if(command == "panties"){
+                      if(!message.channel.nsfw){
                         return message.channel.send("este canal no es NSFW")
                       }
                       const pantiesembed = new Discord.MessageEmbed()
@@ -164,8 +164,8 @@ client.on("message", async message => {
                       .setImage(akaneko.nsfw.panties())
                       message.channel.send(pantiesembed)
                        }
-                     if(command == "femdom") {
-                      if(!message.channel.nsfw) {
+                     if(command == "femdom"){
+                      if(!message.channel.nsfw){
                         return message.channel.send("este canal no es NSFW")
                       }
                       const femdomembed = new Discord.MessageEmbed()
@@ -175,7 +175,7 @@ client.on("message", async message => {
                        }
 
         
-if(command == "r34") {
+if(command == "r34"){
   if(!message.channel.nsfw) return message.channel.send("Marca este canal como NSFW")
 const tags = args.join(" ")
 if(!tags) return message.channel.send("Para encontrar la imagen que buscas, es necesario ")
