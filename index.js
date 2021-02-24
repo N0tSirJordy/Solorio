@@ -178,7 +178,7 @@ client.on("message", async message => {
 if(command == "r34"){
   if(!message.channel.nsfw) return message.channel.send("Marca este canal como NSFW")
 const tags = args.join(" ")
-if(!tags) return message.channel.send("Para encontrar la imagen que buscas, es necesario que ")
+if(!tags) return message.channel.send("Para encontrar la imagen que buscas, es necesario que escribas un tag. Ejemplo: 's!r34 foxgirl'. ")
 booru.search('rule34', [tags], { limit: 1, random: true })
 .then(posts => {
 for(let post of posts){
